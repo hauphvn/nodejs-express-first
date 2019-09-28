@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+//Generator id user
+const shortid = require('shortid')
+
 //lowdb
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
@@ -46,11 +49,23 @@ app.get('/users/search', function (req, res) {
 
 });
 
+app.get('/users/create',function (req, res) {
+    res.render('users/create');
+});
+
+app.get('/users/:id',function (req, res) {
+   let theId = req.params.id;
+   let user = db.get('users').find({id: theId}).value();
+   res.render('users/view-detail',{
+       users: user
+   });
+});
+
 app.post('/users/create',function (req, res) {
     let theName = req.body.name;
     let thePhone = req.body.phone;
     let user = {
-        // id: users.length + 1,
+        id: shortid.generate(),
         name: theName,
         phone: thePhone
     };
@@ -58,9 +73,7 @@ app.post('/users/create',function (req, res) {
     res.redirect('/users');
 });
 
-app.get('/users/create',function (req, res) {
-    res.render('users/create');
-});
+
 
 app.listen(port, function(){
     console.log("Server listening on port "+port);

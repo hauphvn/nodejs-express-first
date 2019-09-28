@@ -1,15 +1,8 @@
 {
   "users": [
     {
-      "name": "jack",
-      "phone": "123"
-    },
-    {
-      "name": "jack2",
-      "phone": "234"
-    },
-    {
-      "name": "hau",
+      "id": "jskM2wyP",
+      "name": "thang",
       "phone": "123"
     }
   ]
