@@ -1,0 +1,10 @@
+h1 List users
+a(href='/users/create') Register
+
+form(action="/users/search",method="GET")
+    input(type="text" name="name")
+    button Search
+
+ul
+    each val, index in users
+        li= val.phone + '-'+ val.name
