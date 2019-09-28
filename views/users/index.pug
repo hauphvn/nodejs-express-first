@@ -1,13 +1,16 @@
-h1 List users
-a(href='/users/create') Register
-
-form(action="/users/search",method="GET")
-    input(type="text" name="name")
-    button Search
-
-ul
-    each val, index in users
-        li
-        span=val.phone + '-'+ val.name
-        span &nbsp
-        a(href='/users/' + val.id) View
+extends ../layouts/common
+block content
+    div(class="container")
+        div(class="row")
+            div(class="col-sm-12")
+                h1 List users
+                a(href='/users/create') Register
+                form(action="/users/search",method="GET")
+                    input(type="text",name="name",class="form-control")
+                    button(class="btn btn-primary ml-2") Search
+                    ul
+                       each val, index in users
+                        li
+                        span=val.phone + '-' + val.name
+                        span &nbsp
+                        a(href='/users/' + val.id) View
