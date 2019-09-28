@@ -15,10 +15,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 
+//Location public file
+app.use(express.static('public'));
+
 app.get('/',function (req, res) {
-    res.render('index',{
-        name:'aaa'
-    });
+    res.render('index')
 });
 
 app.use('/users', userRouter);
